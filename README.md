@@ -6,7 +6,7 @@ This quickstart clones the HANC repo, builds, and runs the application
 
 ### Tools you will need installed  
 + .NET Core https://www.microsoft.com/net/core  
-+ Text editor of choice or Visual Studio Code https://code.visualstudio.com/
++ GIT https://git-scm.com/downloads
 
 1) Clone the HANC repo  
 ```git clone https://github.com/thewizster/hanc.git```
