@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Do not include Dev appsettings file in repo
+AspNetAPI/appsettings.development.json
