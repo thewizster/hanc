@@ -41,6 +41,10 @@ namespace Hanc.AspNetAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // Use custom api key auth middleware. All client requests must include a header key/val for ApiKey
+            // ApiKey value is set in appsettings
+            app.UseApiKeyAuthorization();
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

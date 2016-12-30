@@ -16,6 +16,7 @@ namespace Hanc.AspNetAPI
             MacSecret = "default_secret";
         }
         public string MacSecret { get; set; }
+        public string ApiKey { get; set; }
     }
     /// <summary>
     /// The options pattern uses custom options classes to represent a group of related settings.
