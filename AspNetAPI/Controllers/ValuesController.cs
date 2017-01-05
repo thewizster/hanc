@@ -24,7 +24,7 @@ namespace Hanc.AspNetAPI.Controllers
         {
             Mac mac = new Mac(_optionsAccessor.MacSecret);
             var token = mac.GenerateToken("Hello World!");
-            return new string[] { "value1", "value2", token, _optionsAccessor.MacSecret };
+            return new string[] { "Hello", "World", token };
         }
 
         // GET api/values/5
