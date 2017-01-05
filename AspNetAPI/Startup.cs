@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Hanc.AspNetAPI
 {
@@ -48,12 +49,29 @@ namespace Hanc.AspNetAPI
         {
             // Use custom api key auth middleware. All client requests must include a header key/val for ApiKey
             // ApiKey value is set in appsettings
-            app.UseApiKeyAuthorization();
+            app.UseApiKeyAuthorization("/api");
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}"
+                    );
+            });
 
             // Initialize the database
             Models.DbInitializer.Initialize(context);
