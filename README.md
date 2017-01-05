@@ -27,6 +27,6 @@ Use Postman to test Hanc
 
 5) Set postman to GET request for http://localhost:5000/api/hello
 
-6) Set ApiKey header in Postman request to some_key_value (see appsettings.json to change ApiKey)
+6) Set X-Hanc-Application-Id header in Postman request to some_key_value (see appsettings.json to change AppId)
 
 7) Press send for the Postman GET request
