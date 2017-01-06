@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Webextant.Security.Cryptography;
 using Microsoft.Extensions.Primitives;
+using Hanc.Common.Options;
 
 namespace Hanc.AspNetAPI
 {

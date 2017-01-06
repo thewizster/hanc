@@ -1,0 +1,18 @@
+{
+  "title": "Hanc Common",
+  "copyright": "2017 Raymond Brady",
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.1",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+    "Microsoft.Extensions.DependencyModel": "1.1.0",
+    "Microsoft.DotNet.InternalAbstractions": "1.0.500-preview2-1-003177"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
