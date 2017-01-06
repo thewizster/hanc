@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Hanc.Common.Options;
+using Hanc.Common.Data;
 
 namespace Hanc.AspNetAPI
 {
@@ -33,19 +35,19 @@ namespace Hanc.AspNetAPI
             services.AddOptions();
 
             // Register the IConfiguration instance which MyOptions binds against.
-            services.Configure<SecretOptions>(Configuration);
+            services.Configure<Hanc.Common.Options.SecretOptions>(Configuration);
             services.Configure<HelloOptions>(Configuration);
 
             // Add framework services.
             services.AddMvc();
 
             // Add DbContext
-            services.AddDbContext<Data.HancContext>(options =>
+            services.AddDbContext<Hanc.Common.Data.HancContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, Data.HancContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, HancContext context)
         {
             // Use custom api key auth middleware. All client requests must include a header key/val for ApiKey
             // ApiKey value is set in appsettings
