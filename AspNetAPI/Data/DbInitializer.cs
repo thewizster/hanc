@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Hanc.AspNetAPI.Data;
+using Hanc.Common.Data;
 
 namespace Hanc.AspNetAPI.Models
 {
@@ -17,13 +17,14 @@ namespace Hanc.AspNetAPI.Models
         public static void Initialize(HancContext context)
         {
             context.Database.EnsureCreated();
+            var titles = context.Set<Title>();
 
-            if (context.Titles.Any())
+            if (titles.Any())
             {
                 return; // DB has already been seeded
             }
 
-            var titles = new Title[] {
+            var seedTitles = new Title[] {
                 new Title { Name="Contact", ForEntityName="Person" },
                 new Title { Name="Employee", ForEntityName="Person" },
                 new Title { Name="Manager", ForEntityName="Person"},
@@ -35,7 +36,7 @@ namespace Hanc.AspNetAPI.Models
                 new Title { Name="Lead", ForEntityName="Organization"},
                 new Title { Name="Business", ForEntityName="Organization"}
             };
-            context.Titles.AddRange(titles);
+            titles.AddRange(seedTitles);
             context.SaveChanges();
 
         }
