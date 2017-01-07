@@ -30,3 +30,15 @@ Use Postman to test Hanc
 6) Set X-Hanc-Application-Id header in Postman request to some_key_value (see appsettings.json to change AppId)
 
 7) Press send for the Postman GET request
+
+# What's Included
+
++ SQL server support via entity framework
++ Message authentication option - HMAC(SHA256)
++ API request authorization via app id/api key middleware
++ Uses options pattern and DI for appsettings access
++ Allows extending API via shared dbcontext model and controller libraries
+
+# Roadmap
+
++ Azure integrations: File storage, DocumentDB, Insights
